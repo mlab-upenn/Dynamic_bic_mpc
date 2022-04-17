@@ -111,9 +111,10 @@ class NFTOCPNLP(object):
         Br = 1.0 # 1.0
         a = u[0]
         steer = u[1]
+        x[3] = x[3] + 0.000001
 
-        alpha_f = steer - np.arctan(x[4] + lf * x[2], x[3])
-        alpha_r = - np.arctan(x[4] - lf * x[2], x[3])
+        alpha_f = steer - np.arctan2(x[4] + lf * x[2], x[3])
+        alpha_r = - np.arctan2(x[4] - lf * x[2], x[3])
 
         Fyf = Df * np.sin(Cf * np.arctan(Bf * alpha_f))
         Fyr = Dr * np.sin(Cr * np.arctan(Br * alpha_r))
